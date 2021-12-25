@@ -1,62 +1,78 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCamera, faPlus, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
-import {StyledPostForm, StyledFormBtn, CloseBtn, SubmitBtn, PostLabel, MotionFolder, StyledFolder, Folder, ImgInput, 
-    PreviewFile, PreviewVideo, PreviewImg, PreviewDltBtn, PostText, PostTextArea,
-    MotionPlus, StyledPlusIcon } from "./PostStyles"
-
+import {
+  faCamera,
+  faPlus,
+  faTimesCircle,
+} from "@fortawesome/free-solid-svg-icons";
+import {
+  StyledPostForm,
+  StyledFormBtn,
+  CloseBtn,
+  SubmitBtn,
+  PostLabel,
+  MotionFolder,
+  StyledFolder,
+  Folder,
+  ImgInput,
+  PreviewFile,
+  PreviewVideo,
+  PreviewImg,
+  PreviewDltBtn,
+  PostText,
+  PostTextArea,
+  MotionPlus,
+  StyledPlusIcon,
+} from "./PostStyles";
 
 const Post = () => {
+  const [caption, setCaption] = useState("");
+  const [file, setFile] = useState(undefined);
+  const [fileType, setFileType] = useState("");
+  const [isUploaded, setIsUploaded] = useState(false);
 
-    const [caption, setCaption] = useState("");
-    const [file, setFile] = useState(undefined);
-    const [fileType, setFileType] = useState("");
-     const [isUploaded, setIsUploaded] = useState(false);
-  
-    function captionChange(e) {
-      setCaption(e.target.value);
-      console.log(caption);
+  function captionChange(e) {
+    setCaption(e.target.value);
+    console.log(caption);
     //   captureCaption(caption);
-    }
-  
-    function fileChange(e) {
+  }
+
+  function fileChange(e) {
     //   captureFile(e.target.files[0]);
-  
-      setFileType(e.target.files[0].type);
-      let reader = new FileReader();
-  
-      reader.onload = function (e) {
-        setFile(e.target.result);
-        setIsUploaded(true);
-      };
-  
-      reader.readAsDataURL(e.target.files[0]);
-    }
-  
-    // function handleSubmit(e) {
-    //   e.preventDefault();
-    //   handleOk();
-    // }
-  
 
-    const [isOnClick, setIsOnClick] = useState(false);
-    function Click() {
-        setIsOnClick(true);
-    }
+    setFileType(e.target.files[0].type);
+    let reader = new FileReader();
 
-    function BackToIcon() {
-        setIsOnClick(false);
-    }
+    reader.onload = function (e) {
+      setFile(e.target.result);
+      setIsUploaded(true);
+    };
 
-    return (
-        <div>
-            {isOnClick ? (
+    reader.readAsDataURL(e.target.files[0]);
+  }
+
+  // function handleSubmit(e) {
+  //   e.preventDefault();
+  //   handleOk();
+  // }
+
+  const [isOnClick, setIsOnClick] = useState(false);
+  function Click() {
+    setIsOnClick(true);
+  }
+
+  function BackToIcon() {
+    setIsOnClick(false);
+  }
+
+  return (
+    <div>
+      {isOnClick ? (
         <StyledPostForm
           initial={{ opacity: 0, y: -60 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-        //   onSubmit={handleSubmit}
-          
+          //   onSubmit={handleSubmit}
         >
           <StyledFormBtn>
             <CloseBtn
@@ -88,7 +104,7 @@ const Post = () => {
                     onChange={fileChange}
                   />
                   <Folder htmlFor="upload-input">
-                    <FontAwesomeIcon icon={faCamera}/>
+                    <FontAwesomeIcon icon={faCamera} />
                     choose a photo or video
                   </Folder>
                 </StyledFolder>
@@ -115,9 +131,10 @@ const Post = () => {
                       setIsUploaded(false);
                       setFile(null);
                     }}
-                  > <FontAwesomeIcon icon={faTimesCircle}/>
+                  >
+                    {" "}
+                    <FontAwesomeIcon icon={faTimesCircle} />
                   </PreviewDltBtn>
-                  
                 </PreviewFile>
               )}
             </MotionFolder>
@@ -142,12 +159,12 @@ const Post = () => {
             whileTap={{ scale: 0.95 }}
             onClick={Click}
           >
-            <FontAwesomeIcon icon={faPlus}/>
+            <FontAwesomeIcon icon={faPlus} />
           </StyledPlusIcon>
         </MotionPlus>
       )}
-        </div>
-    )
-}
+    </div>
+  );
+};
 
-export default Post
+export default Post;

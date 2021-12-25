@@ -1,19 +1,17 @@
-import Head from 'next/head'
-import About from './homepage/About'
+import Head from "next/head";
+import About from "./homepage/About";
 
-import Intro from './homepage/Intro'
-
-
+import Intro from "./homepage/Intro";
 
 export default function Home() {
   return (
-    <div >
+    <div>
       <Head>
         <title>Home</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Intro/>
-      <About/>
+      <Intro />
+      <About />
     </div>
-  )
+  );
 }
