@@ -20,7 +20,7 @@ export const IntroLeft = styled.div`
   justify-content: center;
   align-items: flex-start;
   color: #f2f2f2;
-  padding: 0rem 2rem;
+  padding: 0rem 1.5rem;
 `;
 export const IntroH1 = styled(motion.div)`
   margin-bottom: 1rem;
@@ -33,10 +33,10 @@ export const IntroP = styled(motion.div)`
 `;
 export const BtnMotion = styled(motion.div)``;
 export const StyledBtn = styled(motion.div)`
-  color: #ffffff;
+  color: #24252b;
   padding: 1rem 2rem;
   font-size: 1rem;
-  background-image: linear-gradient(45deg, #0151ff 0%, #8198fc 100%);
+  background-image: linear-gradient(45deg, #eec371 0%, #ffb11a 100%);
   cursor: pointer;
   border-style: none;
   border-radius: 0.5rem;

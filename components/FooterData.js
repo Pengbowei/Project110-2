@@ -1,27 +1,27 @@
 const FooterData = [
   {
-    title: "INSTACHAIN ",
+    title: "STRATEBOX",
   },
   {
     title: "PAGES",
-    item1: "social",
-    path1: "/social",
-    item2: "NFT",
-    path2: "/NFT",
+    item1: "Coins",
+    path1: "Coins",
+    item2: "Strategy",
+    path2: "Strategy",
   },
   {
     title: "SUPPORT",
     item1: "Support",
-    path1: "/",
+    path1: "",
     item2: "Privacy Policy",
-    path2: "/",
+    path2: "",
   },
   {
     title: "CONTACT US",
     item1: "Instagram",
-    path1: "/",
+    path1: "",
     item2: "Twitter",
-    path2: "/",
+    path2: "",
   },
 ];
 export default FooterData;

@@ -3,40 +3,39 @@ import {
   Nav,
   StyledLogo,
   Logo,
+  StyledSidebar,
+  StyledBars,
   StyledMenu,
   MeunItem,
-  StyledWallet,
 } from "./NavbarStyles";
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faWallet } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
-const Navbar = () => {
+const Navbar = ({ toggle }) => {
   return (
     <Nav>
       <StyledLogo whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
         <Link href="/" passHref>
-          <Logo>Instachain</Logo>
+          <Logo>STRATEBOX</Logo>
         </Link>
       </StyledLogo>
+      <StyledSidebar>
+        <StyledBars whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+          <FontAwesomeIcon icon={faBars} onClick={toggle} />
+        </StyledBars>
+      </StyledSidebar>
       <StyledMenu>
-        <Link href="/Social" passHref>
+        <Link href="/Coins" passHref>
           <MeunItem whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-            social
+            Coins
           </MeunItem>
         </Link>
-        <Link href="/NFT" passHref>
+        <Link href="/Strategy" passHref>
           <MeunItem whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-            NFT
+            Strategy
           </MeunItem>
         </Link>
       </StyledMenu>
-      <div>
-        <Link href="/Wallet" passHref>
-          <StyledWallet whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-            wallet
-          </StyledWallet>
-        </Link>
-      </div>
     </Nav>
   );
 };

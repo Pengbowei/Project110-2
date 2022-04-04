@@ -20,17 +20,16 @@ const Intro = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 2 }}
           >
-            Send Unlimited Post
+            Be the King in STRATEBOX
           </IntroH1>
           <IntroP
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 2 }}
           >
-            Not afraid of crashes, not afraid of being deleted, record important
-            information, Here.
+           Build your own imaginary strategy, your own money printing machine, Become a winner in the market right now .
           </IntroP>
-          <Link href="/Social" passHref>
+          <Link href="/Coins" passHref>
             <BtnMotion
               initial={{ opacity: 0, y: 60 }}
               animate={{ opacity: 1, y: 0 }}

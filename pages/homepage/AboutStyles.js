@@ -24,10 +24,8 @@ export const AboutCardIcon = styled.div`
   font-size: 10rem;
   text-align: center;
   color: #dddddd46;
-
-  // color: transparent;
-  // background-clip: text;
-  // background-image: linear-gradient(45deg, #c401ff 0%, #01f7ffe3 100%);
+  // color: #ffb11a;
+  // text-shadow: 0px 0px 5px #eec371;
 `;
 export const AboutCardCaption = styled.div`
   width: 100%;

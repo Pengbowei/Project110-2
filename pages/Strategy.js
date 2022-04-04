@@ -1,16 +1,16 @@
 import Head from "next/head";
 
-const NFT = () => {
+const Strategy = () => {
   return (
     <div>
       <Head>
-        <title>NFT</title>
+        <title>Strategy</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1>NFT</h1>
+      <h1>Strategy</h1>
     </div>
   );
 };
 
-export default NFT;
+export default Strategy;
