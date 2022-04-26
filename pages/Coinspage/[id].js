@@ -7,21 +7,16 @@ import {
   Tooltip,
   Bar,
   BarChart,
-  ComposedChart,
-  CartesianGrid,
   Legend,
-  Area,
-  ScatterChart,
-  Scatter,
+  Brush,
 } from "recharts";
 
 import {
   StyledCoinData,
+  StyleCoinInfo,
   StyledChart,
   StyledCoinName,
   StyledLineChart,
-  StyledComposedChart,
-  StyledScatterChart,
   StyledBarChart,
 } from "./ChartStyles";
 
@@ -29,7 +24,10 @@ const Coin = ({ coin, ohlcv }) => {
   return (
     <>
       <StyledCoinData>
+        <StyleCoinInfo>
         <StyledCoinName>{coin.name}</StyledCoinName>
+        <StyledCoinName>{coin.name}</StyledCoinName>
+        </StyleCoinInfo>
         <StyledChart>
           <StyledLineChart>
             <ResponsiveContainer width="100%" height={500}>
@@ -51,44 +49,15 @@ const Coin = ({ coin, ohlcv }) => {
                   stroke="#eec371"
                   strokeWidth={2}
                 />
+                <Brush />
                 <Tooltip />
                 <Legend />
               </LineChart>
             </ResponsiveContainer>
           </StyledLineChart>
-          <StyledComposedChart>
-            <ResponsiveContainer width="100%" height={500}>
-              <ComposedChart
-                data={ohlcv}
-                margin={{
-                  top: 20,
-                  right: 20,
-                  bottom: 20,
-                  left: 20,
-                }}
-              >
-                <XAxis dataKey="start_time" scale="band" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                <Area
-                  type="monotone"
-                  dataKey="low"
-                  fill="#eec371"
-                  stroke="#eec371"
-                />
-                <Bar dataKey="high" barSize={20} fill="#4b4b4d" />
-                <Line
-                  type="monotone"
-                  dataKey="open"
-                  fill="#ffc600"
-                  stroke="#ffc600"
-                />
-              </ComposedChart>
-            </ResponsiveContainer>
-          </StyledComposedChart>
+          
           <StyledBarChart>
-            <ResponsiveContainer width="100%" height={500}>
+            <ResponsiveContainer width="100%" height={300}>
               <BarChart
                 data={ohlcv}
                 barSize={20}
@@ -112,24 +81,7 @@ const Coin = ({ coin, ohlcv }) => {
               </BarChart>
             </ResponsiveContainer>
           </StyledBarChart>
-          <StyledScatterChart>
-            <ResponsiveContainer width="100%" height={500}>
-              <ScatterChart
-                margin={{
-                  top: 20,
-                  right: 20,
-                  bottom: 20,
-                  left: 20,
-                }}
-              >
-                <CartesianGrid stroke="#6b6b6b98" />
-                <XAxis type="number" dataKey="high" />
-                <YAxis type="number" dataKey="low" />
-                <Tooltip cursor={{ strokeDasharray: "3 3" }} />
-                <Scatter data={ohlcv} fill="#eec371" />
-              </ScatterChart>
-            </ResponsiveContainer>
-          </StyledScatterChart>
+         
         </StyledChart>
       </StyledCoinData>
     </>
@@ -145,12 +97,12 @@ export async function getServerSideProps(context) {
   const data = await res.json();
   
   //send symbol to database. like:BTCUSDT
-  const ohlcv = await select(data.symbol.toUpperCase() + '/USDT')
+  // const ohlcv = await select(data.symbol.toUpperCase() + '/USDT')
 
   return {
     props: {
       coin: data,
-      ohlcv: ohlcv,
+      // ohlcv: ohlcv,
     },
   };
 }
