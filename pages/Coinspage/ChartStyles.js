@@ -15,20 +15,27 @@ export const StyledChart = styled.div`
 export const StyleCoinInfo = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  
   padding: 0rem 2rem;
   border-right: solid;
 `;
-export const StyledCoinName = styled.div`
-  padding: 0.5rem;
-  border: solid;
-  border-color: #f3dc58;
-  border-radius: 0.1rem;
-  box-shadow: 0px 0px 3px 3px #eec371;
+export const StyledCoinImg = styled.img`
+  padding:2rem;
+`
+export const StyledCoinIntro = styled.div`
+color :#999999;
+`
+export const StyledCoinName = styled.h1`
+  padding: 1rem;
   text-align: center;
-  color: #f3dc58;
-  text-shadow: 0px 0px 5px #eec371;
+  color: #f2f2f2;
 `;
+
+export const StyledCoinPrice = styled.p`
+  text-align: left;
+  color: #f2f2f2;
+  font-size : 1.5rem;
+`
 
 export const StyledLineChart = styled.div`
   width:80rem;

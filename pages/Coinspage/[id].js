@@ -18,15 +18,21 @@ import {
   StyledCoinName,
   StyledLineChart,
   StyledBarChart,
+  StyledCoinImg,
+  StyledCoinIntro,
+  StyledCoinPrice
 } from "./ChartStyles";
 
 const Coin = ({ coin, ohlcv }) => {
   return (
     <>
       <StyledCoinData>
-        <StyleCoinInfo>
-        <StyledCoinName>{coin.name}</StyledCoinName>
-        <StyledCoinName>{coin.name}</StyledCoinName>
+      <StyleCoinInfo>
+          <StyledCoinImg src={coin.image.large}/>
+          <StyledCoinName>{coin.name}</StyledCoinName>
+          <StyledCoinIntro>{coin.description.en.substr(0, 188)}</StyledCoinIntro>
+          <StyledCoinPrice>Current Price ${coin.market_data.current_price.usd} </StyledCoinPrice>
+          <StyledCoinPrice>Market Cap ${coin.market_data.market_cap.usd} </StyledCoinPrice>
         </StyleCoinInfo>
         <StyledChart>
           <StyledLineChart>
@@ -41,7 +47,7 @@ const Coin = ({ coin, ohlcv }) => {
                 }}
               >
                 <XAxis dataKey="start_time" />
-                <YAxis />
+                <YAxis type="number" domain={["dataMin", "dataMax"]}/>
                 <Line
                   dataKey="close"
                   type="monotone"
@@ -69,7 +75,7 @@ const Coin = ({ coin, ohlcv }) => {
                 }}
               >
                 <XAxis dataKey="start_time" />
-                <YAxis />
+                <YAxis type="number" domain={[0, dataMax => (dataMax * 3)]} allowDataOverflow={true}/>
                 <Bar
                   dataKey="volumn"
                   stroke="#eec371"
@@ -97,12 +103,12 @@ export async function getServerSideProps(context) {
   const data = await res.json();
   
   //send symbol to database. like:BTCUSDT
-  // const ohlcv = await select(data.symbol.toUpperCase() + '/USDT')
+  const ohlcv = await select(data.symbol.toUpperCase() + '/USDT')
 
   return {
     props: {
       coin: data,
-      // ohlcv: ohlcv,
+      ohlcv: ohlcv,
     },
   };
 }

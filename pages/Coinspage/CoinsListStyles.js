@@ -9,6 +9,7 @@ display: flex;
   border-bottom: 1px solid #2e2e2e;
   width: 80rem;
   padding: 0rem 2rem;
+  color:#999999;
 `;
 export const CoinData = styled.div`
 display: flex;
